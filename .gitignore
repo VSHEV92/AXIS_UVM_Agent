@@ -1,0 +1,8 @@
+*
+!.gitignore
+
+!src
+!src/*
+
+!example_rand
+!example_rand/*
