@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module top_tb;
+module top_tb #(string TEST_NAME) ();
 
     import uvm_pkg::*;
     import test_pkg::*; 
@@ -33,7 +33,7 @@ cmpy_0 dut (
         uvm_config_db #(virtual axis_if #(TDATA_BYTES_IN))::set(null, "uvm_test_top.*", "axis_in_1", axis_in_1);
         uvm_config_db #(virtual axis_if #(TDATA_BYTES_IN))::set(null, "uvm_test_top.*", "axis_in_2", axis_in_2);
         uvm_config_db #(virtual axis_if #(TDATA_BYTES_OUT))::set(null, "uvm_test_top.*", "axis_out", axis_out);
-        run_test("rand_axis_test");
+        run_test(TEST_NAME);
     end
 
 endmodule

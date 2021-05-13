@@ -4,5 +4,10 @@
 !src
 !src/*
 
-!example_rand
-!example_rand/*
+!example_env
+!example_env/*
+
+!tcl
+!tcl/*
+
+!README.md

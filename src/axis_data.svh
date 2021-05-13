@@ -5,12 +5,12 @@ class axis_data extends uvm_sequence_item;
         super.new(name);
     endfunction
 
-    int unsigned max_clock_before_tvalid = 5;
-    int unsigned min_clock_before_tvalid = 0;
-    int unsigned max_clock_before_tready = 5;
-    int unsigned min_clock_before_tready = 0;
-    int unsigned max_tdata = 255;
-    int unsigned min_tdata = 0;
+    int unsigned max_clock_before_tvalid;
+    int unsigned min_clock_before_tvalid;
+    int unsigned max_clock_before_tready;
+    int unsigned min_clock_before_tready;
+    int unsigned max_tdata;
+    int unsigned min_tdata;
 
     rand bit [1024-1:0] tdata;
     rand int unsigned clock_before_tvalid; // число тактов до установки tvalid
