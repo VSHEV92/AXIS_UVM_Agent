@@ -35,17 +35,13 @@ interface axis_if
             @(posedge aclk);
 
         aresetn <= 1'b1;
+        // wait for two ticks after reset release 
+        repeat(2) @(posedge aclk);
     endtask
     
 
     // write to axis
     task write (input logic [TDATA_BYTES*8-1:0] data, input int unsigned aclk_delay);
-        // wait for release of reset and two ticks after that
-        if (!aresetn) begin 
-            wait(aresetn)
-            repeat(2) @(posedge aclk);
-        end
-
         repeat(aclk_delay)
             @(posedge aclk);
             
@@ -64,12 +60,6 @@ interface axis_if
 
     // read from axis
     task read (output logic [TDATA_BYTES*8-1:0] data, input int unsigned aclk_delay);
-        // wait for release of reset and two ticks after that 
-        if (!aresetn) begin 
-            wait(aresetn)
-            repeat(2) @(posedge aclk);
-        end
-
         repeat(aclk_delay)
             @(posedge aclk);
 

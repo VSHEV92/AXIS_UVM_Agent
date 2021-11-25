@@ -6,7 +6,6 @@ class base_test extends uvm_test;
     endfunction
 
     extern function void build_phase(uvm_phase phase);
-    //extern task reset_phase (uvm_phase phase);
     extern task main_phase(uvm_phase phase);
     extern task shutdown_phase(uvm_phase phase);
     extern function string find_file_path(string file_full_name);
@@ -41,13 +40,6 @@ function void base_test::build_phase(uvm_phase phase);
     axis_seqc_out.axis_seqc_config = axis_seqc_out_config;
      
 endfunction
-
-// task base_test::reset_phase(uvm_phase phase);
-//     phase.raise_objection(this);
-//         #1;
-//     phase.drop_objection(this);
-// endtask
-
 
 task base_test::main_phase(uvm_phase phase);
     phase.raise_objection(this);

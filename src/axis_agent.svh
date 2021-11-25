@@ -26,7 +26,9 @@ endclass
 
 // ---------------------------------------------------------------------
 task axis_agent::reset_phase (uvm_phase phase);
-    axis_if_h.reset(aresetn_ticks);
+    phase.raise_objection(this);
+        axis_if_h.reset(aresetn_ticks);
+    phase.drop_objection(this);
 endtask
 
 function void axis_agent::build_phase (uvm_phase phase);
