@@ -10,7 +10,9 @@ class axis_agent #(int TDATA_BYTES = 1) extends uvm_agent;
 
     extern function void build_phase (uvm_phase phase);
     extern function void connect_phase (uvm_phase phase);
+    extern task reset_phase (uvm_phase phase);
     
+    int unsigned aresetn_ticks = 10;
     agent_type_t agent_type = MASTER; 
 
     virtual axis_if #(TDATA_BYTES) axis_if_h;
@@ -23,6 +25,10 @@ class axis_agent #(int TDATA_BYTES = 1) extends uvm_agent;
 endclass 
 
 // ---------------------------------------------------------------------
+task axis_agent::reset_phase (uvm_phase phase);
+    axis_if_h.reset(aresetn_ticks);
+endtask
+
 function void axis_agent::build_phase (uvm_phase phase);
 
     axis_sequencer_h = axis_sequencer::type_id::create("axis_sequencer_h", this); 
