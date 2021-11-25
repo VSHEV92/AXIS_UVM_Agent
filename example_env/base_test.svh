@@ -57,7 +57,7 @@ task base_test::shutdown_phase(uvm_phase phase);
     phase.drop_objection(this);
 endtask
 
-// функция для поиска пути расположения тестового файла
+// find path to the test file
 function string base_test::find_file_path(string file_full_name);
     int str_len = file_full_name.len();
     str_len--;

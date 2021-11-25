@@ -3,7 +3,7 @@
 `uvm_analysis_imp_decl(_out)
 
 class test_scoreboard #(int TDATA_BYTES = 1) extends uvm_scoreboard;
-    `uvm_component_utils(test_scoreboard #(TDATA_BYTES))
+    `uvm_component_param_utils(test_scoreboard #(TDATA_BYTES))
     function new (string name = "", uvm_component parent = null);
         super.new(name, parent);
     endfunction

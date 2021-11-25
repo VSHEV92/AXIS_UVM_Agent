@@ -13,10 +13,9 @@ class axis_data extends uvm_sequence_item;
     int unsigned min_tdata;
 
     rand bit [1024-1:0] tdata;
-    rand int unsigned clock_before_tvalid; // число тактов до установки tvalid
-    rand int unsigned clock_before_tready; // число тактов до установки tready
+    rand int unsigned clock_before_tvalid; // number of ticks before set tvalid
+    rand int unsigned clock_before_tready; // number of ticks before set tready
 
-    // ограничения на рандомизацию
     constraint tdata_const {
         tdata <= max_tdata;
         tdata >= min_tdata;

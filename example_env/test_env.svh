@@ -24,7 +24,7 @@ endclass
 
 function void test_env::build_phase(uvm_phase phase);
     
-    // получение интерфейсов из базы данных
+    // getting interfaces from a database
     if (!uvm_config_db #(virtual axis_if #(TDATA_BYTES_IN))::get(this, "", "axis_in_1", axis_in_1))
         `uvm_fatal("GET_DB", "Can not get axis_in_1")
 
@@ -34,20 +34,20 @@ function void test_env::build_phase(uvm_phase phase);
     if (!uvm_config_db #(virtual axis_if #(TDATA_BYTES_OUT))::get(this, "", "axis_out", axis_out))
         `uvm_fatal("GET_DB", "Can not get axis_out")            
 
-    // создание scoreboard
+    // create scoreboard
     test_scoreboard_h = test_scoreboard #(TDATA_BYTES_IN)::type_id::create("test_scoreboard_h", this);
 
-    // создание агентов
+    // create agents
     axis_agent_in_1 = axis_agent #(TDATA_BYTES_IN)::type_id::create("axis_agent_in_1", this);
     axis_agent_in_2 = axis_agent #(TDATA_BYTES_IN)::type_id::create("axis_agent_in_2", this);
     axis_agent_out = axis_agent #(TDATA_BYTES_OUT)::type_id::create("axis_agent_out", this);
 
-    // выбор типов агентов
+    // set agent's types
     axis_agent_in_1.agent_type = MASTER;
     axis_agent_in_2.agent_type = MASTER;
     axis_agent_out.agent_type = SLAVE;
 
-    // соединение интерфейсов
+    // connect interfaces
     axis_agent_in_1.axis_if_h = this.axis_in_1;
     axis_agent_in_2.axis_if_h = this.axis_in_2;
     axis_agent_out.axis_if_h = this.axis_out;

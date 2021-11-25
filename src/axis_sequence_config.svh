@@ -5,15 +5,15 @@ class axis_sequence_config extends uvm_object;
         super.new(name);
     endfunction
     
-    int unsigned trans_numb = 100; // число транзакций
-    bit from_file = 0; // брать данные из файла
-    string file_name = ""; // имя файла с данными
+    int unsigned trans_numb = 100; // number of transactions
+    bit from_file = 0;     // get data from file
+    string file_name = ""; // file name
 
-    int unsigned max_clock_before_tvalid = 5; // максимальное число тактов до установки tvalid
-    int unsigned min_clock_before_tvalid = 0; // минимальное число тактов до установки tvalid
-    int unsigned max_clock_before_tready = 5; // максимальное число тактов до установки tready
-    int unsigned min_clock_before_tready = 0; // минимальное число тактов до установки tready
-    int unsigned max_tdata = 255;  // максимальное значение tdata
-    int unsigned min_tdata = 0;    // минимальное значение tdata
+    int unsigned max_clock_before_tvalid = 5; // maximum number of ticks before set tvalid
+    int unsigned min_clock_before_tvalid = 0; // minimum number of ticks before set tvalid
+    int unsigned max_clock_before_tready = 5; // maximum number of ticks before set tready
+    int unsigned min_clock_before_tready = 0; // minimum number of ticks before set tready
+    int unsigned max_tdata = 255;  // maximum value of tdata
+    int unsigned min_tdata = 0;    // minimum value of tdata
 
 endclass

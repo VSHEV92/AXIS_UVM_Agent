@@ -1,6 +1,6 @@
-// драйвер master
+// master driver
 class axis_driver_master #(int TDATA_BYTES = 1) extends uvm_driver #(axis_data);
-    `uvm_component_utils(axis_driver_master #(TDATA_BYTES))
+    `uvm_component_param_utils(axis_driver_master #(TDATA_BYTES))
     function new (string name = "", uvm_component parent = null);
         super.new(name, parent);
     endfunction
@@ -23,9 +23,9 @@ endtask
 
 
 
-// драйвер slave
+// slave driver
 class axis_driver_slave #(int TDATA_BYTES = 1) extends uvm_driver #(axis_data);
-    `uvm_component_utils(axis_driver_slave #(TDATA_BYTES))
+    `uvm_component_param_utils(axis_driver_slave #(TDATA_BYTES))
     function new (string name = "", uvm_component parent = null);
         super.new(name, parent);
     endfunction

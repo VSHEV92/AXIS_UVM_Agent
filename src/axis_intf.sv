@@ -5,12 +5,11 @@ interface axis_if
 (
     input aclk
 );
-    // сигналы интерфейса
+    // signals
     logic [TDATA_BYTES*8-1:0] tdata;
     logic tvalid = 1'b0;
     logic tready = 1'b0;
-    
-    // модпорты 
+     
     modport master
     (
         output tdata,
@@ -25,7 +24,7 @@ interface axis_if
         output tready 
     );
 
-    // запись в axis
+    // write to axis
     task write (input logic [TDATA_BYTES*8-1:0] data, input int unsigned aclk_delay);
         repeat(aclk_delay)
             @(posedge aclk);
@@ -33,7 +32,7 @@ interface axis_if
         tdata <= data;
         tvalid <= 1'b1;
 
-        // ожидание tready 
+        // wait tready 
         forever begin
             @(posedge aclk);
             if (tready) begin 
@@ -43,14 +42,14 @@ interface axis_if
         end
     endtask
 
-    // чтение из axis
+    // read from axis
     task read (output logic [TDATA_BYTES*8-1:0] data, input int unsigned aclk_delay);
         repeat(aclk_delay)
             @(posedge aclk);
 
         tready <= 1'b1;
 
-        // ожидание tvalid 
+        // wait tvalid 
         forever begin
             @(posedge aclk);
             if (tvalid) begin 
