@@ -3,7 +3,7 @@ typedef enum {MASTER, SLAVE} agent_type_t;
 
 class axis_agent #(int TDATA_BYTES = 1) extends uvm_agent;
 
-    `uvm_component_utils(axis_agent #(TDATA_BYTES))
+    `uvm_component_param_utils(axis_agent #(TDATA_BYTES))
     function new (string name = "", uvm_component parent = null);
         super.new(name, parent);
     endfunction

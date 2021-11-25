@@ -43,10 +43,10 @@ function void test_scoreboard::write_out (axis_data axis_data_h);
     
     bit [8*TDATA_BYTES-1:0] data_in_1;
     bit [8*TDATA_BYTES-1:0] data_in_2;
-    bit [8*TDATA_BYTES*2:0] data_out;
+    bit [8*(2*TDATA_BYTES+2)-1:0] data_out;
 
     bit [8*TDATA_BYTES/2-1:0] data_in_1_i, data_in_1_q, data_in_2_i, data_in_2_q;
-    bit [8*TDATA_BYTES:0] data_out_i, data_out_q, data_out_i_gold, data_out_q_gold;
+    bit [8*(TDATA_BYTES+1)-1:0] data_out_i, data_out_q, data_out_i_gold, data_out_q_gold;
 
     data_in_1 = axis_data_q_in_1.pop_front();
     data_in_2 = axis_data_q_in_2.pop_front();
@@ -59,8 +59,8 @@ function void test_scoreboard::write_out (axis_data axis_data_h);
     data_in_2_i = data_in_2[8*TDATA_BYTES/2-1:0];
     data_in_2_q = data_in_2[8*TDATA_BYTES-1:8*TDATA_BYTES/2];
     
-    data_out_i = data_out[8*TDATA_BYTES:0];
-    data_out_q = data_out[8*(TDATA_BYTES+1)+8*TDATA_BYTES:8*(TDATA_BYTES+1)];
+    data_out_i = data_out[8*(TDATA_BYTES+1)-1:0];
+    data_out_q = data_out[8*(2*TDATA_BYTES+2)-1:8*(TDATA_BYTES+1)];
 
     data_out_i_gold = data_in_1_i*data_in_2_i - data_in_1_q*data_in_2_q;
     data_out_q_gold = data_in_1_i*data_in_2_q + data_in_1_q*data_in_2_i;
